@@ -29,10 +29,10 @@ public class Tabuleiro {
                     for(int i = 2; i < 6; i+=3) this.adicionar(new Bispo(nomePeca, Cores.BRANCO, 1, colunas[i]));
                     break;
                 case REI:
-                    this.adicionar(new Rei(nomePeca, Cores.BRANCO, 1, colunas[3]));
+                    this.adicionar(new Rei(nomePeca, Cores.BRANCO, 1, colunas[4]));
                     break;
                 case RAINHA:
-                    this.adicionar(new Rainha(nomePeca, Cores.BRANCO, 1, colunas[4]));
+                    this.adicionar(new Rainha(nomePeca, Cores.BRANCO, 1, colunas[3]));
                     break;
             }
         }
