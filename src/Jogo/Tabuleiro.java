@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import Pecas.*;
-import Pecas.Abstract.Peca;
 import Utils.*;
-import com.sun.istack.internal.Nullable;
+import Pecas.Abstract.Peca;
 
 public class Tabuleiro {
     private ArrayList<Peca> pecas;
@@ -62,7 +61,6 @@ public class Tabuleiro {
         }
     }
 
-
     public void adicionar(Peca p) {
         pecas.add(p);
     }
@@ -82,6 +80,12 @@ public class Tabuleiro {
         return false;
     }
 
+    /** Verifica se o movimento eliminou a peça do adversário. */
+    public boolean isMovimentoEliminatorio(Peca p, String posicao) {
+
+        return false;
+    }
+
     /** Imprime o status atual do jogo. Deve ser mostrado as posições atuais de cada peça. */
     public void imprimirConfiguracaoAtual() {
         StringBuilder strBuilder = new StringBuilder();
@@ -89,7 +93,7 @@ public class Tabuleiro {
         for (int linha = 0; linha < 8; linha++) {
             strBuilder.append(8 - linha);
             for (int coluna = 0; coluna < 8; coluna++) {
-                Optional<Peca> oPeca = existePeca(linha+1, coluna);
+                Optional<Peca> oPeca = existePecaNaPosicao(linha+1, coluna);
                 if (oPeca.isPresent()) {
                     Peca p = oPeca.get();
                     strBuilder.append(" ");
@@ -109,22 +113,14 @@ public class Tabuleiro {
         System.out.println(strBuilder.toString());
     }
 
-    /** Verifica se o movimento eliminou a peça do adversário. */
-    public boolean isMovimentoEliminatorio(Peca p, String posicao) {
+    public Optional<Peca> existePecaNaPosicao(int linha, int colunaIndex) {
+        Posicao posicao = new Posicao(colunas[colunaIndex], linha);
+        Optional<Peca> pecaFiltrada;
+        pecaFiltrada = pecas.stream()
+                .filter(p -> p.getPosicaoAtual().equals(posicao))
+                .findAny();
 
-        return false;
+        return pecaFiltrada;
     }
 
-    public Optional<Peca> existePeca(int linha, int coluna) {
-        Optional<Peca> op = Optional.empty();
-        for (Peca p : pecas) {
-            String[] posicao = p.getPosicaoAtual();
-            if (posicao[0].equals(String.valueOf(linha))
-                    && posicao[1].equals(colunas[coluna])) {
-                 op = Optional.of(p);
-                return op;
-            }
-        }
-        return op;
-    }
 }

@@ -12,4 +12,5 @@ public class Main {
         //Jogador jogador2 = new Jogador("Muriel", Cores.PRETO);
         //Xadrez xadrez = new Xadrez(tabuleiro, jogador1, jogador2);
     }
+
 }
