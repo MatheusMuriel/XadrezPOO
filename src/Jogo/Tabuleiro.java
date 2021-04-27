@@ -1,10 +1,12 @@
 package Jogo;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import Pecas.*;
 import Pecas.Abstract.Peca;
 import Utils.*;
+import com.sun.istack.internal.Nullable;
 
 public class Tabuleiro {
     private ArrayList<Peca> pecas;
@@ -87,7 +89,16 @@ public class Tabuleiro {
         for (int linha = 0; linha < 8; linha++) {
             strBuilder.append(8 - linha);
             for (int coluna = 0; coluna < 8; coluna++) {
-                strBuilder.append(" . ");
+                Optional<Peca> oPeca = existePeca(linha+1, coluna);
+                if (oPeca.isPresent()) {
+                    Peca p = oPeca.get();
+                    strBuilder.append(" ");
+                    strBuilder.append(p.getNome().getLetra(p.getNome(), p.getCor()));
+                    strBuilder.append(" ");
+                } else {
+                    strBuilder.append(" . ");
+                }
+
             }
             strBuilder.append(" ");
             strBuilder.append((8 - linha));
@@ -102,5 +113,18 @@ public class Tabuleiro {
     public boolean isMovimentoEliminatorio(Peca p, String posicao) {
 
         return false;
+    }
+
+    public Optional<Peca> existePeca(int linha, int coluna) {
+        Optional<Peca> op = Optional.empty();
+        for (Peca p : pecas) {
+            String[] posicao = p.getPosicaoAtual();
+            if (posicao[0].equals(String.valueOf(linha))
+                    && posicao[1].equals(colunas[coluna])) {
+                 op = Optional.of(p);
+                return op;
+            }
+        }
+        return op;
     }
 }
