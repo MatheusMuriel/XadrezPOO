@@ -14,8 +14,13 @@ public class Torre extends Peca {
      * @param linha
      * @param coluna
      */
-    public Torre(NomePecas nome, Cores cor, String linha, String coluna) {
+    public Torre(NomePecas nome, Cores cor, int linha, String coluna) {
         super(nome, cor, linha, coluna);
+    }
+
+    @Override
+    public void atualizarPosicao(String posicao) {
+
     }
 
     @Override

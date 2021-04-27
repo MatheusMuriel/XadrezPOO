@@ -14,8 +14,13 @@ public class Rei extends Peca {
      * @param linha
      * @param coluna
      */
-    public Rei(NomePecas nome, Cores cor, String linha, String coluna) {
+    public Rei(NomePecas nome, Cores cor, int linha, String coluna) {
         super(nome, cor, linha, coluna);
+    }
+
+    @Override
+    public void atualizarPosicao(String posicao) {
+
     }
 
     @Override

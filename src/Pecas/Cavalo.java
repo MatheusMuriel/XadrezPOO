@@ -14,8 +14,13 @@ public class Cavalo extends Peca {
      * @param linha
      * @param coluna
      */
-    public Cavalo(NomePecas nome, Cores cor, String linha, String coluna) {
+    public Cavalo(NomePecas nome, Cores cor, int linha, String coluna) {
         super(nome, cor, linha, coluna);
+    }
+
+    @Override
+    public void atualizarPosicao(String posicao) {
+
     }
 
     @Override

@@ -17,22 +17,22 @@ public class Tabuleiro {
         for (NomePecas nomePeca : NomePecas.values()) {
             switch (nomePeca) {
                 case PEAO:
-                    for(int i = 0; i < 8; i++) this.adicionar(new Peao(nomePeca, Cores.BRANCO, "2", colunas[i]));
+                    for(int i = 0; i < 8; i++) this.adicionar(new Peao(nomePeca, Cores.BRANCO, 2, colunas[i]));
                     break;
                 case TORRE:
-                    for(int i = 0; i < 8; i+=7) this.adicionar(new Torre(nomePeca, Cores.BRANCO, "1", colunas[i]));
+                    for(int i = 0; i < 8; i+=7) this.adicionar(new Torre(nomePeca, Cores.BRANCO, 1, colunas[i]));
                     break;
                 case CAVALO:
-                    for(int i = 1; i < 7; i+=5) this.adicionar(new Cavalo(nomePeca, Cores.BRANCO, "1", colunas[i]));
+                    for(int i = 1; i < 7; i+=5) this.adicionar(new Cavalo(nomePeca, Cores.BRANCO, 1, colunas[i]));
                     break;
                 case BISPO:
-                    for(int i = 2; i < 6; i+=3) this.adicionar(new Bispo(nomePeca, Cores.BRANCO, "1", colunas[i]));
+                    for(int i = 2; i < 6; i+=3) this.adicionar(new Bispo(nomePeca, Cores.BRANCO, 1, colunas[i]));
                     break;
                 case REI:
-                    this.adicionar(new Rei(nomePeca, Cores.BRANCO, "1", colunas[3]));
+                    this.adicionar(new Rei(nomePeca, Cores.BRANCO, 1, colunas[3]));
                     break;
                 case RAINHA:
-                    this.adicionar(new Rainha(nomePeca, Cores.BRANCO, "1", colunas[4]));
+                    this.adicionar(new Rainha(nomePeca, Cores.BRANCO, 1, colunas[4]));
                     break;
             }
         }
@@ -40,22 +40,22 @@ public class Tabuleiro {
         for (NomePecas nomePeca : NomePecas.values()) {
             switch (nomePeca) {
                 case PEAO:
-                    for(int i = 0; i < 8; i++) this.adicionar(new Peao(nomePeca, Cores.PRETO, "7", colunas[i]));
+                    for(int i = 0; i < 8; i++) this.adicionar(new Peao(nomePeca, Cores.PRETO, 7, colunas[i]));
                     break;
                 case TORRE:
-                    for(int i = 0; i < 8; i+=7) this.adicionar(new Torre(nomePeca, Cores.PRETO, "8", colunas[i]));
+                    for(int i = 0; i < 8; i+=7) this.adicionar(new Torre(nomePeca, Cores.PRETO, 8, colunas[i]));
                     break;
                 case CAVALO:
-                    for(int i = 1; i < 7; i+=5) this.adicionar(new Cavalo(nomePeca, Cores.PRETO, "8", colunas[i]));
+                    for(int i = 1; i < 7; i+=5) this.adicionar(new Cavalo(nomePeca, Cores.PRETO, 8, colunas[i]));
                     break;
                 case BISPO:
-                    for(int i = 2; i < 6; i+=3) this.adicionar(new Bispo(nomePeca, Cores.PRETO, "8", colunas[i]));
+                    for(int i = 2; i < 6; i+=3) this.adicionar(new Bispo(nomePeca, Cores.PRETO, 8, colunas[i]));
                     break;
                 case REI:
-                    this.adicionar(new Rei(nomePeca, Cores.PRETO, "8", colunas[4]));
+                    this.adicionar(new Rei(nomePeca, Cores.PRETO, 8, colunas[4]));
                     break;
                 case RAINHA:
-                    this.adicionar(new Rainha(nomePeca, Cores.PRETO, "8", colunas[3]));
+                    this.adicionar(new Rainha(nomePeca, Cores.PRETO, 8, colunas[3]));
                     break;
             }
         }
