@@ -11,6 +11,12 @@ public class Posicao {
         this.linha = linha;
     }
 
+    public Posicao(String posicao) {
+        String[] posicoes = posicao.split("");
+        this.coluna = posicoes[0];
+        this.linha = Integer.parseInt(posicoes[1]);
+    }
+
     public String toString() {
         return coluna + linha;
     }

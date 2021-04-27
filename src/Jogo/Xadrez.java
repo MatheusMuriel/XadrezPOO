@@ -23,6 +23,10 @@ public class Xadrez {
 
     }
 
+    public boolean isMovimentoValido(Posicao[] posicao) {
+        return false;
+    }
+
     public StatusJogo getStatusDoJogo() {
         // TODO implementar Logica
         return StatusJogo.EM_JOGO;
