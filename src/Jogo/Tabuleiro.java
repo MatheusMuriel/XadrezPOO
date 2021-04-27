@@ -1,6 +1,7 @@
 package Jogo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Optional;
 
 import Pecas.*;
@@ -9,30 +10,33 @@ import Pecas.Abstract.Peca;
 
 public class Tabuleiro {
     private ArrayList<Peca> pecas;
-    private static String[] colunas = {"A","B","C","D","E","F","G","H"};
+    private ArrayList<String> colunas;
+
 
     public Tabuleiro() {
+        String[] letras = {"A","B","C","D","E","F","G","H"};
+        this.colunas = new ArrayList<>(Arrays.asList(letras));
         pecas = new ArrayList<>();
 
         for (NomePecas nomePeca : NomePecas.values()) {
             switch (nomePeca) {
                 case PEAO:
-                    for(int i = 0; i < 8; i++) this.adicionar(new Peao(nomePeca, Cores.BRANCO, 2, colunas[i]));
+                    for(int i = 0; i < 8; i++) this.adicionar(new Peao(nomePeca, Cores.BRANCO, 2, this.colunas.get(i)));
                     break;
                 case TORRE:
-                    for(int i = 0; i < 8; i+=7) this.adicionar(new Torre(nomePeca, Cores.BRANCO, 1, colunas[i]));
+                    for(int i = 0; i < 8; i+=7) this.adicionar(new Torre(nomePeca, Cores.BRANCO, 1, this.colunas.get(i)));
                     break;
                 case CAVALO:
-                    for(int i = 1; i < 7; i+=5) this.adicionar(new Cavalo(nomePeca, Cores.BRANCO, 1, colunas[i]));
+                    for(int i = 1; i < 7; i+=5) this.adicionar(new Cavalo(nomePeca, Cores.BRANCO, 1, this.colunas.get(i)));
                     break;
                 case BISPO:
-                    for(int i = 2; i < 6; i+=3) this.adicionar(new Bispo(nomePeca, Cores.BRANCO, 1, colunas[i]));
+                    for(int i = 2; i < 6; i+=3) this.adicionar(new Bispo(nomePeca, Cores.BRANCO, 1, this.colunas.get(i)));
                     break;
                 case REI:
-                    this.adicionar(new Rei(nomePeca, Cores.BRANCO, 1, colunas[4]));
+                    this.adicionar(new Rei(nomePeca, Cores.BRANCO, 1, this.colunas.get(4)));
                     break;
                 case RAINHA:
-                    this.adicionar(new Rainha(nomePeca, Cores.BRANCO, 1, colunas[3]));
+                    this.adicionar(new Rainha(nomePeca, Cores.BRANCO, 1, this.colunas.get(3)));
                     break;
             }
         }
@@ -40,22 +44,22 @@ public class Tabuleiro {
         for (NomePecas nomePeca : NomePecas.values()) {
             switch (nomePeca) {
                 case PEAO:
-                    for(int i = 0; i < 8; i++) this.adicionar(new Peao(nomePeca, Cores.PRETO, 7, colunas[i]));
+                    for(int i = 0; i < 8; i++) this.adicionar(new Peao(nomePeca, Cores.PRETO, 7, this.colunas.get(i)));
                     break;
                 case TORRE:
-                    for(int i = 0; i < 8; i+=7) this.adicionar(new Torre(nomePeca, Cores.PRETO, 8, colunas[i]));
+                    for(int i = 0; i < 8; i+=7) this.adicionar(new Torre(nomePeca, Cores.PRETO, 8, this.colunas.get(i)));
                     break;
                 case CAVALO:
-                    for(int i = 1; i < 7; i+=5) this.adicionar(new Cavalo(nomePeca, Cores.PRETO, 8, colunas[i]));
+                    for(int i = 1; i < 7; i+=5) this.adicionar(new Cavalo(nomePeca, Cores.PRETO, 8, this.colunas.get(i)));
                     break;
                 case BISPO:
-                    for(int i = 2; i < 6; i+=3) this.adicionar(new Bispo(nomePeca, Cores.PRETO, 8, colunas[i]));
+                    for(int i = 2; i < 6; i+=3) this.adicionar(new Bispo(nomePeca, Cores.PRETO, 8, this.colunas.get(i)));
                     break;
                 case REI:
-                    this.adicionar(new Rei(nomePeca, Cores.PRETO, 8, colunas[4]));
+                    this.adicionar(new Rei(nomePeca, Cores.PRETO, 8, this.colunas.get(4)));
                     break;
                 case RAINHA:
-                    this.adicionar(new Rainha(nomePeca, Cores.PRETO, 8, colunas[3]));
+                    this.adicionar(new Rainha(nomePeca, Cores.PRETO, 8, this.colunas.get(3)));
                     break;
             }
         }
@@ -70,14 +74,13 @@ public class Tabuleiro {
 
     }
 
-    /**
-     * Verifica se o movimento realizado obedece os limites físicos do tabuleiro.
-     * @param posicao TODO verificar tipo
-     * @return
-     */
-    public boolean isMovimentoValido(int posicao) {
-
-        return false;
+    /** Verifica se o movimento realizado obedece os limites físicos do tabuleiro. */
+    public boolean isMovimentoValido(Posicao posicaoDestino) {
+        int l = posicaoDestino.getLinha();
+        String c = posicaoDestino.getColuna();
+        boolean linhaValida = (l > 0 && l < 9);
+        boolean colunaValida = this.colunas.contains(c);
+        return linhaValida && colunaValida;
     }
 
     /** Verifica se o movimento eliminou a peça do adversário. */
@@ -114,7 +117,7 @@ public class Tabuleiro {
     }
 
     public Optional<Peca> existePecaNaPosicao(int linha, int colunaIndex) {
-        Posicao posicao = new Posicao(colunas[colunaIndex], linha);
+        Posicao posicao = new Posicao(this.colunas.get(colunaIndex), linha);
         Optional<Peca> pecaFiltrada;
         pecaFiltrada = pecas.stream()
                 .filter(p -> p.getPosicaoAtual().equalsTo(posicao))
