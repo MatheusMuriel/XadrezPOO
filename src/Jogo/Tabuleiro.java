@@ -82,7 +82,20 @@ public class Tabuleiro {
 
     /** Imprime o status atual do jogo. Deve ser mostrado as posições atuais de cada peça. */
     public void imprimirConfiguracaoAtual() {
+        StringBuilder strBuilder = new StringBuilder();
+        strBuilder.append("  a  b  c  d  e  f  g  h\n");
+        for (int linha = 0; linha < 8; linha++) {
+            strBuilder.append(8 - linha);
+            for (int coluna = 0; coluna < 8; coluna++) {
+                strBuilder.append(" . ");
+            }
+            strBuilder.append(" ");
+            strBuilder.append((8 - linha));
+            strBuilder.append("\n");
+        }
+        strBuilder.append("  a  b  c  d  e  f  g  h\n");
 
+        System.out.println(strBuilder.toString());
     }
 
     /** Verifica se o movimento eliminou a peça do adversário. */
