@@ -90,8 +90,8 @@ public class Tabuleiro {
     public void imprimirConfiguracaoAtual() {
         StringBuilder strBuilder = new StringBuilder();
         strBuilder.append("  a  b  c  d  e  f  g  h\n");
-        for (int linha = 0; linha < 8; linha++) {
-            strBuilder.append(8 - linha);
+        for (int linha = 7; linha >= 0; linha--) {
+            strBuilder.append(linha+1);
             for (int coluna = 0; coluna < 8; coluna++) {
                 Optional<Peca> oPeca = existePecaNaPosicao(linha+1, coluna);
                 if (oPeca.isPresent()) {
