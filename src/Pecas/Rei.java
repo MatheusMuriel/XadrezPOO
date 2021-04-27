@@ -1,4 +1,25 @@
 package Pecas;
 
-public class Rei {
+import Pecas.Abstract.Peca;
+import Utils.Cores;
+import Utils.NomePecas;
+
+public class Rei extends Peca {
+
+    /**
+     * Construtor que recebe um nome, uma cor e uma posição inicial.
+     *
+     * @param nome
+     * @param cor
+     * @param linha
+     * @param coluna
+     */
+    public Rei(NomePecas nome, Cores cor, String linha, String coluna) {
+        super(nome, cor, linha, coluna);
+    }
+
+    @Override
+    public boolean isMovimentoValido(String posicao) {
+        return false;
+    }
 }

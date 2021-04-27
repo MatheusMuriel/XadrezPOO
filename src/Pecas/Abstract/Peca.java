@@ -6,11 +6,13 @@ import Utils.NomePecas;
 public abstract class Peca {
     NomePecas nome;
     Cores cor;
-    double posicaoAtual;
+    String[] posicaoAtual;
 
     /** Construtor que recebe um nome, uma cor e uma posição inicial. */
-    public Peca (String nome, String cor, String posicao) {
-
+    public Peca (NomePecas nome, Cores cor, String linha, String coluna) {
+        posicaoAtual = new String[2];
+        posicaoAtual[0] = linha;
+        posicaoAtual[1] = coluna;
     }
 
     public void atualizarPosicao(String posicao) {
