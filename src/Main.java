@@ -42,7 +42,7 @@ public class Main {
                 //System.out.print("Jogada: ");
                 //input = scanner.nextLine().split(",");
                 String stop = scanner.nextLine();
-                input = "d2,d4".split(",");
+                input = "d2,d4".split(",");  // Todo deixar o input do usuario
 
                 inputValido = verificarInput(input);
                 jogada[0] = inputValido ? new Posicao(input[0]) : null;
