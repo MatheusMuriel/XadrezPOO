@@ -15,8 +15,7 @@ public class Posicao {
         return coluna + linha;
     }
 
-    public boolean equals(Peca peca2) {
-        Posicao p2 = peca2.getPosicaoAtual();
+    public boolean equalsTo(Posicao p2) {
         return (p2.coluna.equals(this.coluna) && p2.linha == this.linha);
     }
 

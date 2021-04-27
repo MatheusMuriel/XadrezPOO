@@ -117,7 +117,7 @@ public class Tabuleiro {
         Posicao posicao = new Posicao(colunas[colunaIndex], linha);
         Optional<Peca> pecaFiltrada;
         pecaFiltrada = pecas.stream()
-                .filter(p -> p.getPosicaoAtual().equals(posicao))
+                .filter(p -> p.getPosicaoAtual().equalsTo(posicao))
                 .findAny();
 
         return pecaFiltrada;
