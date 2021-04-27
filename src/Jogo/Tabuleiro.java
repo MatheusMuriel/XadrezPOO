@@ -6,6 +6,10 @@ import Pecas.Abstract.Peca;
 public class Tabuleiro {
     private ArrayList<Peca> pecas;
 
+    public Tabuleiro() {
+
+    }
+
     public void adicionar(Peca p) {
 
     }

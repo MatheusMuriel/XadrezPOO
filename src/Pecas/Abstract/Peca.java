@@ -1,8 +1,11 @@
 package Pecas.Abstract;
 
+import Utils.Cores;
+import Utils.NomePecas;
+
 public abstract class Peca {
-    String nome;
-    String cor;
+    NomePecas nome;
+    Cores cor;
     double posicaoAtual;
 
     /** Construtor que recebe um nome, uma cor e uma posição inicial. */

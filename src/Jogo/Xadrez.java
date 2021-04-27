@@ -8,6 +8,10 @@ public class Xadrez {
     private Jogador jogador1;
     private Jogador jogador2;
 
+    public Xadrez(Tabuleiro t, Jogador j1, Jogador j2) {
+
+    }
+
     public void adicionar(Tabuleiro tabuleiro) {
 
     }
@@ -21,10 +25,6 @@ public class Xadrez {
     }
 
     public void jogar(Jogador jogador, String nomePeca, String posicao) {
-
-    }
-
-    public Xadrez(Tabuleiro t, Jogador j1, Jogador j2) {
 
     }
 
