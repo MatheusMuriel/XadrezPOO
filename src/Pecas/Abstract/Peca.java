@@ -7,7 +7,6 @@ public abstract class Peca {
     Cores cor;
     Posicao posicaoAtual;
 
-    /** Construtor que recebe um nome, uma cor e uma posição inicial. */
     public Peca (NomePecas nome, Cores cor, int linha, String coluna) {
         Posicao posicao = new Posicao(coluna, linha);
         setPosicaoAtual(posicao);
@@ -17,8 +16,9 @@ public abstract class Peca {
 
     public abstract void atualizarPosicao(Posicao posicao);
 
-    /** Método abstrato para verificar se a posição solicitada é válida dado as regras de movimentação daquela peça. **/
     public abstract boolean isMovimentoValido(Posicao posicao);
+
+    public abstract boolean capturaEm(Posicao posicao);
 
 
     /********** Getters e Setters **********/

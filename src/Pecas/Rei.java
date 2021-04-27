@@ -21,4 +21,9 @@ public class Rei extends Peca {
         // TODO implementar Rogue
         return false;
     }
+
+    @Override
+    public boolean capturaEm(Posicao posicao) {
+        return false;
+    }
 }

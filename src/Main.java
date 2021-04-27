@@ -41,7 +41,7 @@ public class Main {
                 System.out.println("Entrada invalida! Por favor digite novamente");
                 //System.out.print("Jogada: ");
                 //input = scanner.nextLine().split(",");
-                String a = scanner.nextLine();
+                String stop = scanner.nextLine();
                 input = "d2,d4".split(",");
 
                 inputValido = verificarInput(input);
@@ -51,6 +51,9 @@ public class Main {
                 jogadaValida = inputValido && movimentoValido;
             }
             System.out.println("Entrada Valida");
+            xadrez.jogar(jogada);
+
+            String stop = scanner.nextLine();
         }
     }
 

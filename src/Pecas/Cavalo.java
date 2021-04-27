@@ -7,14 +7,6 @@ import Utils.Posicao;
 
 public class Cavalo extends Peca {
 
-    /**
-     * Construtor que recebe um nome, uma cor e uma posição inicial.
-     *
-     * @param nome
-     * @param cor
-     * @param linha
-     * @param coluna
-     */
     public Cavalo(NomePecas nome, Cores cor, int linha, String coluna) {
         super(nome, cor, linha, coluna);
     }
@@ -26,6 +18,11 @@ public class Cavalo extends Peca {
 
     @Override
     public boolean isMovimentoValido(Posicao posicao) {
+        return false;
+    }
+
+    @Override
+    public boolean capturaEm(Posicao posicao) {
         return false;
     }
 }

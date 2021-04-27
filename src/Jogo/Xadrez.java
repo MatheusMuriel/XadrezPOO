@@ -20,8 +20,20 @@ public class Xadrez {
         this.jogadorDaVez = this.jogador1;
     }
 
-    public void jogar(Jogador jogador, NomePecas nomePeca, Posicao posicao) {
+    public void jogar(Posicao[] posicoes) {
+        Peca pecaOrigem = this.tabuleiro.existePecaNaPosicao(
+                posicoes[0].getColuna(), posicoes[0].getLinha()).get();
 
+        boolean existeCaptura = this.tabuleiro.isMovimentoEliminatorio(pecaOrigem, posicoes[1]);
+        if (existeCaptura) {
+            Peca pecaDestino = this.tabuleiro.existePecaNaPosicao(
+                    posicoes[1].getColuna(), posicoes[1].getLinha()).get();
+            this.tabuleiro.remover(pecaDestino);
+            this.jogadorDaVez.adicionarPecaCapturada(pecaDestino);
+        }
+
+        pecaOrigem.atualizarPosicao(posicoes[1]);
+        this.jogadorDaVez = this.jogadorDaVez == this.jogador1 ? this.jogador2 : this.jogador1;
     }
 
     public boolean isMovimentoValido(Posicao[] posicoes) {

@@ -71,10 +71,9 @@ public class Tabuleiro {
 
     /** Remove a peça do jogo. */
     public void remover(Peca p) {
-
+        // Todo implementar
     }
 
-    /** Verifica se o movimento realizado obedece os limites físicos do tabuleiro. */
     public boolean isMovimentoValido(Posicao posicaoDestino) {
         int l = posicaoDestino.getLinha();
         String c = posicaoDestino.getColuna();
@@ -84,12 +83,14 @@ public class Tabuleiro {
     }
 
     /** Verifica se o movimento eliminou a peça do adversário. */
-    public boolean isMovimentoEliminatorio(Peca p, String posicao) {
-
+    public boolean isMovimentoEliminatorio(Peca pecaOrigem, Posicao posicaoTo) {
+        Optional<Peca> opPecaDestino = existePecaNaPosicao(posicaoTo.getColuna(), posicaoTo.getLinha());
+        if (opPecaDestino.isPresent()) {
+            return pecaOrigem.capturaEm(posicaoTo);
+        }
         return false;
     }
 
-    /** Imprime o status atual do jogo. Deve ser mostrado as posições atuais de cada peça. */
     public void imprimirConfiguracaoAtual() {
         StringBuilder strBuilder = new StringBuilder();
         strBuilder.append("  a  b  c  d  e  f  g  h\n");
