@@ -1,5 +1,6 @@
 package Jogo;
 
+import Pecas.Abstract.Peca;
 import Utils.NomePecas;
 import Utils.Posicao;
 import Utils.StatusJogo;
@@ -23,8 +24,28 @@ public class Xadrez {
 
     }
 
-    public boolean isMovimentoValido(Posicao[] posicao) {
-        return false;
+    public boolean isMovimentoValido(Posicao[] posicoes) {
+        boolean tabuleiroValidade = this.tabuleiro.isMovimentoValido(posicoes[1]);
+        if (tabuleiroValidade) {
+            Optional<Peca> opPecaOrigem = this.tabuleiro.existePecaNaPosicao(
+                    posicoes[0].getColuna(), posicoes[0].getLinha());
+            if (opPecaOrigem.isPresent()) {
+                Peca pecaOrigem = opPecaOrigem.get();
+                boolean pecaValidade = pecaOrigem.isMovimentoValido(posicoes[1]);
+                if (pecaValidade)  {
+                    return true;
+                } else {
+                    System.out.println("Movimento de peça invalido.");
+                    return false;
+                }
+            } else {
+                System.out.println("Não existe uma peça nesta posição.");
+                return false;
+            }
+        } else {
+            System.out.println("Esse Movimentro ultrapassa os limites do tabuleiro.");
+            return false;
+        }
     }
 
     public StatusJogo getStatusDoJogo() {

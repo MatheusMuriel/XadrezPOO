@@ -3,28 +3,22 @@ package Pecas;
 import Pecas.Abstract.Peca;
 import Utils.Cores;
 import Utils.NomePecas;
+import Utils.Posicao;
 
 public class Peao extends Peca {
 
-    /**
-     * Construtor que recebe um nome, uma cor e uma posição inicial.
-     *
-     * @param nome
-     * @param cor
-     * @param linha
-     * @param coluna
-     */
     public Peao(NomePecas nome, Cores cor, int linha, String coluna) {
         super(nome, cor, linha, coluna);
     }
 
     @Override
-    public void atualizarPosicao(String posicao) {
+    public void atualizarPosicao(Posicao posicao) {
 
     }
 
     @Override
-    public boolean isMovimentoValido(String posicao) {
+    public boolean isMovimentoValido(Posicao posicao) {
+        // TODO implementar logica de só capturar de lado
         return false;
     }
 }

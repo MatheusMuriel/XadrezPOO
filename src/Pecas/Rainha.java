@@ -3,6 +3,7 @@ package Pecas;
 import Pecas.Abstract.Peca;
 import Utils.Cores;
 import Utils.NomePecas;
+import Utils.Posicao;
 
 public class Rainha extends Peca {
 
@@ -19,12 +20,12 @@ public class Rainha extends Peca {
     }
 
     @Override
-    public void atualizarPosicao(String posicao) {
+    public void atualizarPosicao(Posicao posicao) {
 
     }
 
     @Override
-    public boolean isMovimentoValido(String posicao) {
+    public boolean isMovimentoValido(Posicao posicao) {
         return false;
     }
 }

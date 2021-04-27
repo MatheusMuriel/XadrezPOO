@@ -15,10 +15,10 @@ public abstract class Peca {
         setCor(cor);
     }
 
-    public abstract void atualizarPosicao(String posicao);
+    public abstract void atualizarPosicao(Posicao posicao);
 
     /** Método abstrato para verificar se a posição solicitada é válida dado as regras de movimentação daquela peça. **/
-    public abstract boolean isMovimentoValido(String posicao);
+    public abstract boolean isMovimentoValido(Posicao posicao);
 
 
     /********** Getters e Setters **********/

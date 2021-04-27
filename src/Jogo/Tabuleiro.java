@@ -79,7 +79,7 @@ public class Tabuleiro {
         int l = posicaoDestino.getLinha();
         String c = posicaoDestino.getColuna();
         boolean linhaValida = (l > 0 && l < 9);
-        boolean colunaValida = this.colunas.contains(c);
+        boolean colunaValida = this.colunas.contains(c.toUpperCase());
         return linhaValida && colunaValida;
     }
 
@@ -96,7 +96,7 @@ public class Tabuleiro {
         for (int linha = 7; linha >= 0; linha--) {
             strBuilder.append(linha+1);
             for (int coluna = 0; coluna < 8; coluna++) {
-                Optional<Peca> oPeca = existePecaNaPosicao(linha+1, coluna);
+                Optional<Peca> oPeca = existePecaNaPosicao(this.colunas.get(coluna), linha+1);
                 if (oPeca.isPresent()) {
                     Peca p = oPeca.get();
                     strBuilder.append(" ");
@@ -116,8 +116,8 @@ public class Tabuleiro {
         System.out.println(strBuilder.toString());
     }
 
-    public Optional<Peca> existePecaNaPosicao(int linha, int colunaIndex) {
-        Posicao posicao = new Posicao(this.colunas.get(colunaIndex), linha);
+    public Optional<Peca> existePecaNaPosicao(String coluna, int linha) {
+        Posicao posicao = new Posicao(coluna, linha);
         Optional<Peca> pecaFiltrada;
         pecaFiltrada = pecas.stream()
                 .filter(p -> p.getPosicaoAtual().equalsTo(posicao))

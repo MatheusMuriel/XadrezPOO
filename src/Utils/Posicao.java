@@ -2,6 +2,8 @@ package Utils;
 
 import Pecas.Abstract.Peca;
 
+import java.util.Locale;
+
 public class Posicao {
     private String coluna;
     private int linha;
@@ -22,7 +24,7 @@ public class Posicao {
     }
 
     public boolean equalsTo(Posicao p2) {
-        return (p2.coluna.equals(this.coluna) && p2.linha == this.linha);
+        return (p2.coluna.toUpperCase().equals(this.coluna.toUpperCase()) && p2.linha == this.linha);
     }
 
     public String getColuna() {

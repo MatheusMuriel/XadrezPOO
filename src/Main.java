@@ -29,17 +29,28 @@ public class Main {
         while (xadrez.getStatusDoJogo().equals(StatusJogo.EM_JOGO)) {
             xadrez.imprimir();
             System.out.println("Digite sua jogada no formato: \"Origem,Destino\" (Ex. D2,D4)");
-            System.out.print("Jogada: ");
+            //System.out.print("Jogada: ");
             //String[] input = scanner.nextLine().split(","); // Todo deixar o input do usuario
+
             String[] input = "d2,d4".split(",");
-            while (!verificarInput(input)) {
+            boolean inputValido = verificarInput(input);
+            Posicao[] jogada = { inputValido ? new Posicao(input[0]) : null, inputValido ? new Posicao(input[1]) : null};
+            boolean movimentoValido = inputValido && xadrez.isMovimentoValido(jogada);
+            boolean jogadaValida = inputValido && movimentoValido;
+            while (!jogadaValida) {
                 System.out.println("Entrada invalida! Por favor digite novamente");
-                System.out.print("Jogada: ");
-                input = scanner.nextLine().split(",");
+                //System.out.print("Jogada: ");
+                //input = scanner.nextLine().split(",");
+                String a = scanner.nextLine();
+                input = "d2,d4".split(",");
+
+                inputValido = verificarInput(input);
+                jogada[0] = inputValido ? new Posicao(input[0]) : null;
+                jogada[1] = inputValido ? new Posicao(input[1]) : null;
+                movimentoValido = inputValido && xadrez.isMovimentoValido(jogada);
+                jogadaValida = inputValido && movimentoValido;
             }
-            Posicao[] jogada = {new Posicao(input[0]), new Posicao(input[1])};
-            xadrez.isMovimentoValido(jogada);
-            //System.out.println("Entrada Valida");
+            System.out.println("Entrada Valida");
         }
     }
 
