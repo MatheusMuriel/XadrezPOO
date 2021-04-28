@@ -27,15 +27,27 @@ public class Peao extends Peca {
         Posicao posicaoAtual = super.getPosicaoAtual();
         ArrayList<Posicao> movimentosValidos = new ArrayList<>();
         if (super.getCor().equals(Cores.BRANCO)) {
-            movimentosValidos.add(new Posicao(posicaoAtual.getColuna(), getPosicaoAtual().getLinha()+1));
+            Posicao p_temp = new Posicao(posicaoAtual.getColuna(), getPosicaoAtual().getLinha()+1);
+            if (!tabuleiro.existePecaNaPosicao(p_temp.getColuna(), p_temp.getLinha()).isPresent()) {
+                movimentosValidos.add(new Posicao(posicaoAtual.getColuna(), getPosicaoAtual().getLinha()+1));
+            }
         } else {
-            movimentosValidos.add(new Posicao(posicaoAtual.getColuna(), getPosicaoAtual().getLinha()-1));
+            Posicao p_temp = new Posicao(posicaoAtual.getColuna(), getPosicaoAtual().getLinha()-1);
+            if (!tabuleiro.existePecaNaPosicao(p_temp.getColuna(), p_temp.getLinha()).isPresent()) {
+                movimentosValidos.add(p_temp);
+            }
         }
         if (!this.usouAvancoDuplo) {
             if (super.getCor().equals(Cores.BRANCO)) {
-                movimentosValidos.add(new Posicao(posicaoAtual.getColuna(), getPosicaoAtual().getLinha()+2));
+                Posicao p_temp = new Posicao(posicaoAtual.getColuna(), getPosicaoAtual().getLinha()+2);
+                if (!tabuleiro.existePecaNaPosicao(p_temp.getColuna(), p_temp.getLinha()).isPresent()) {
+                    movimentosValidos.add(p_temp);
+                }
             } else {
-                movimentosValidos.add(new Posicao(posicaoAtual.getColuna(), getPosicaoAtual().getLinha()-2));
+                Posicao p_temp = new Posicao(posicaoAtual.getColuna(), getPosicaoAtual().getLinha()-2);
+                if (!tabuleiro.existePecaNaPosicao(p_temp.getColuna(), p_temp.getLinha()).isPresent()) {
+                    movimentosValidos.add(p_temp);
+                }
             }
         }
         boolean jogadaValida = movimentosValidos.stream().anyMatch(p -> p.equalsTo(posicao));
