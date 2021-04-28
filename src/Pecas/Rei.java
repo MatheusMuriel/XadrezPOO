@@ -56,7 +56,5 @@ public class Rei extends Peca {
             Optional<Peca> opPeca = tabuleiro.existePecaNaPosicao(p.getColuna(), p.getLinha());
             return opPeca.filter(peca -> p.equalsTo(posicao) && !peca.getCor().equals(super.getCor())).isPresent();
         });
-
-        //return isMovimentoValido(posicao, tabuleiro);
     }
 }

@@ -106,14 +106,12 @@ public class Tabuleiro {
                 } else {
                     strBuilder.append(" . ");
                 }
-
             }
             strBuilder.append(" ");
             strBuilder.append((8 - linha));
             strBuilder.append("\n");
         }
         strBuilder.append("  a  b  c  d  e  f  g  h\n");
-
         System.out.println(strBuilder.toString());
     }
 
