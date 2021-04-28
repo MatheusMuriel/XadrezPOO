@@ -56,6 +56,7 @@ public class Peao extends Peca {
 
     @Override
     public boolean capturaEm(Posicao posicao, Tabuleiro tabuleiro) {
+        // TODO logica para não capturar as proprias peças
         ArrayList<Posicao> movimentosValidos = new ArrayList<>();
         ArrayList<String> colunas = tabuleiro.getColunas();
         int indexColuna = colunas.indexOf(super.getPosicaoAtual().getColuna());
@@ -66,6 +67,11 @@ public class Peao extends Peca {
             movimentosValidos.add(new Posicao(tabuleiro.getColunas().get(indexColuna+1), getPosicaoAtual().getLinha()-1));
             movimentosValidos.add(new Posicao(tabuleiro.getColunas().get(indexColuna-1), getPosicaoAtual().getLinha()-1));
         }
-        return movimentosValidos.stream().anyMatch(p -> p.equalsTo(posicao));
+
+        return movimentosValidos.stream().anyMatch(p -> {
+            Optional<Peca> opPeca = tabuleiro.existePecaNaPosicao(p.getColuna(), p.getLinha());
+            return opPeca.filter(peca -> p.equalsTo(posicao) && !peca.getCor().equals(super.getCor())).isPresent();
+        });
+        //return movimentosValidos.stream().anyMatch(p -> p.equalsTo(posicao));
     }
 }

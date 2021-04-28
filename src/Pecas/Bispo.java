@@ -24,16 +24,7 @@ public class Bispo extends Peca {
         Posicao posicaoAtual = super.getPosicaoAtual();
         int indexColuna = tabuleiro.getColunas().indexOf(super.getPosicaoAtual().getColuna());
         ArrayList<Posicao> movimentosValidos = new ArrayList<>();
-        movimentosValidos.add(
-                new Posicao(tabuleiro.getColunas().get(indexColuna+1),
-                            getPosicaoAtual().getLinha()+1)
-        );
-
-        if (super.getCor().equals(Cores.BRANCO)) {
-            movimentosValidos.add(new Posicao(posicaoAtual.getColuna(), getPosicaoAtual().getLinha()+1));
-        } else {
-            movimentosValidos.add(new Posicao(posicaoAtual.getColuna(), getPosicaoAtual().getLinha()-1));
-        }
+        // TODO
 
         boolean jogadaValida = movimentosValidos.stream().anyMatch(p -> p.equalsTo(posicao));
 
