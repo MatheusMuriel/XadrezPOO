@@ -28,7 +28,7 @@ public class Posicao {
     }
 
     public String getColuna() {
-        return coluna;
+        return coluna.toUpperCase();
     }
 
     public void setColuna(String coluna) {

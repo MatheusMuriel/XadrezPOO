@@ -1,5 +1,6 @@
 package Pecas;
 
+import Jogo.Tabuleiro;
 import Pecas.Abstract.Peca;
 import Utils.Cores;
 import Utils.NomePecas;
@@ -17,12 +18,12 @@ public class Rainha extends Peca {
     }
 
     @Override
-    public boolean isMovimentoValido(Posicao posicao) {
+    public boolean isMovimentoValido(Posicao posicao, Tabuleiro tabuleiro) {
         return false;
     }
 
     @Override
-    public boolean capturaEm(Posicao posicao) {
+    public boolean capturaEm(Posicao posicao, Tabuleiro tabuleiro) {
         return false;
     }
 }

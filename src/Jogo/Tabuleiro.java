@@ -71,6 +71,7 @@ public class Tabuleiro {
 
     /** Remove a peça do jogo. */
     public void remover(Peca p) {
+        this.pecas.remove(p);
         // Todo implementar
     }
 
@@ -86,7 +87,7 @@ public class Tabuleiro {
     public boolean isMovimentoEliminatorio(Peca pecaOrigem, Posicao posicaoTo) {
         Optional<Peca> opPecaDestino = existePecaNaPosicao(posicaoTo.getColuna(), posicaoTo.getLinha());
         if (opPecaDestino.isPresent()) {
-            return pecaOrigem.capturaEm(posicaoTo);
+            return pecaOrigem.capturaEm(posicaoTo, this);
         }
         return false;
     }
@@ -127,4 +128,7 @@ public class Tabuleiro {
         return pecaFiltrada;
     }
 
+    public ArrayList<String> getColunas() {
+        return colunas;
+    }
 }

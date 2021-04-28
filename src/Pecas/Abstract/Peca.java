@@ -1,5 +1,6 @@
 package Pecas.Abstract;
 
+import Jogo.Tabuleiro;
 import Utils.*;
 
 public abstract class Peca {
@@ -16,9 +17,9 @@ public abstract class Peca {
 
     public abstract void atualizarPosicao(Posicao posicao);
 
-    public abstract boolean isMovimentoValido(Posicao posicao);
+    public abstract boolean isMovimentoValido(Posicao posicao, Tabuleiro tabuleiro);
 
-    public abstract boolean capturaEm(Posicao posicao);
+    public abstract boolean capturaEm(Posicao posicao, Tabuleiro tabuleiro);
 
 
     /********** Getters e Setters **********/

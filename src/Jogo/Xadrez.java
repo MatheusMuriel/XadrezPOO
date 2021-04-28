@@ -43,7 +43,7 @@ public class Xadrez {
                     posicoes[0].getColuna(), posicoes[0].getLinha());
             if (opPecaOrigem.isPresent()) {
                 Peca pecaOrigem = opPecaOrigem.get();
-                boolean pecaValidade = pecaOrigem.isMovimentoValido(posicoes[1]);
+                boolean pecaValidade = pecaOrigem.isMovimentoValido(posicoes[1], this.tabuleiro);
                 if (pecaValidade)  {
                     return true;
                 } else {
