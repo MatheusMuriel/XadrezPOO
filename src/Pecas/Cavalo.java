@@ -14,7 +14,7 @@ public class Cavalo extends Peca {
 
     @Override
     public void atualizarPosicao(Posicao posicao) {
-
+        super.setPosicaoAtual(posicao);
     }
 
     @Override

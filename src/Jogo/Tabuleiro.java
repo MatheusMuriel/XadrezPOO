@@ -72,7 +72,6 @@ public class Tabuleiro {
     /** Remove a peça do jogo. */
     public void remover(Peca p) {
         this.pecas.remove(p);
-        // Todo implementar
     }
 
     public boolean isMovimentoValido(Posicao posicaoDestino) {

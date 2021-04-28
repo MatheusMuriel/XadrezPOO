@@ -29,6 +29,7 @@ public class Xadrez {
             Peca pecaDestino = this.tabuleiro.existePecaNaPosicao(
                     posicoes[1].getColuna(), posicoes[1].getLinha()).get();
             this.tabuleiro.remover(pecaDestino);
+            System.out.println("A peça " + pecaDestino.getNome() + " de " + pecaDestino.getPosicaoAtual() + " da cor " + pecaDestino.getCor() + " foi capturada!");
             this.jogadorDaVez.adicionarPecaCapturada(pecaDestino);
         }
 
@@ -43,11 +44,17 @@ public class Xadrez {
                     posicoes[0].getColuna(), posicoes[0].getLinha());
             if (opPecaOrigem.isPresent()) {
                 Peca pecaOrigem = opPecaOrigem.get();
-                boolean pecaValidade = pecaOrigem.isMovimentoValido(posicoes[1], this.tabuleiro);
-                if (pecaValidade)  {
-                    return true;
+                boolean pecaValida = pecaOrigem.getCor().equals(this.jogadorDaVez.getCorPeca());
+                if (pecaValida)  {
+                    boolean movimentoValido = pecaOrigem.isMovimentoValido(posicoes[1], this.tabuleiro);
+                    if (movimentoValido) {
+                        return true;
+                    } else {
+                        System.out.println("Movimento de peça invalido.");
+                        return false;
+                    }
                 } else {
-                    System.out.println("Movimento de peça invalido.");
+                    System.out.println("Essa peça não é sua.");
                     return false;
                 }
             } else {
