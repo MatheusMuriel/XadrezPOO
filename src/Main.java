@@ -14,8 +14,15 @@ public class Main {
 
     public static void main(String[] args) {
         Tabuleiro tabuleiro = new Tabuleiro();
-        //tabuleiro.imprimirConfiguracaoAtual();
-        Jogador jogador1 = new Jogador("Matheus", Cores.BRANCO); //TODO perguntar nome
+//        System.out.println("Digite o nome do jogador das paças Brancas:");
+//        System.out.print("Nome: ");
+//        String nome01 = scanner.nextLine();
+//        System.out.println("Digite o nome do jogador das paças Pretas:");
+//        System.out.print("Nome: ");
+//        String nome02 = scanner.nextLine();
+//        Jogador jogador1 = new Jogador(nome01, Cores.BRANCO);
+//        Jogador jogador2 = new Jogador(nome02, Cores.PRETO);
+        Jogador jogador1 = new Jogador("Matheus", Cores.BRANCO);
         Jogador jogador2 = new Jogador("Muriel", Cores.PRETO);
         Xadrez xadrez = new Xadrez(tabuleiro, jogador1, jogador2);
         gameLoop(xadrez);
@@ -50,10 +57,7 @@ public class Main {
                 movimentoValido = inputValido && xadrez.isMovimentoValido(jogada);
                 jogadaValida = inputValido && movimentoValido;
             }
-            System.out.println("Entrada Valida");
             xadrez.jogar(jogada);
-
-            //String stop = scanner.nextLine();
         }
 
         System.out.println("Fim de jogo.");
