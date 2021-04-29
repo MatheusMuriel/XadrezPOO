@@ -123,6 +123,102 @@ public class Bispo extends Peca {
 
     @Override
     public boolean capturaEm(Posicao posicao, Tabuleiro tabuleiro) {
-        return false;
+        Posicao posicaoAtual = super.getPosicaoAtual();
+
+        int linha = posicaoAtual.getLinha();
+        int indexColuna = tabuleiro.getColunas().indexOf(super.getPosicaoAtual().getColuna());
+
+        ArrayList<Posicao> movimentosValidos = new ArrayList<>();
+
+        boolean d1 = true;
+        while (d1) {
+            linha += 1;
+            indexColuna += 1;
+            if(indexColuna < tabuleiro.getColunas().size() && indexColuna >= 0) {
+                Posicao p1 = new Posicao(tabuleiro.getColunas().get(indexColuna), linha);
+                if(!tabuleiro.isMovimentoValido(p1)) break;
+                Optional<Peca> opPeca = tabuleiro.existePecaNaPosicao(tabuleiro.getColunas().get(indexColuna), linha);
+                if (!opPeca.isPresent()) {
+                    movimentosValidos.add(p1);
+                }
+                if (opPeca.isPresent() && !opPeca.get().getCor().equals(this.getCor())) {
+                    movimentosValidos.add(p1);
+                }
+                d1 = !opPeca.isPresent() && indexColuna < 7;
+            } else {
+                d1 = false;
+            }
+        }
+        linha = posicaoAtual.getLinha();
+        indexColuna = tabuleiro.getColunas().indexOf(super.getPosicaoAtual().getColuna());
+
+        boolean d2 = true;
+        while (d2) {
+            linha += 1;
+            indexColuna -= 1;
+            if(indexColuna < tabuleiro.getColunas().size() && indexColuna >= 0) {
+                Posicao p1 = new Posicao(tabuleiro.getColunas().get(indexColuna), linha);
+                if(!tabuleiro.isMovimentoValido(p1)) break;
+                Optional<Peca> opPeca = tabuleiro.existePecaNaPosicao(tabuleiro.getColunas().get(indexColuna), linha);
+                if (!opPeca.isPresent()) {
+                    movimentosValidos.add(p1);
+                }
+                if (opPeca.isPresent() && !opPeca.get().getCor().equals(this.getCor())) {
+                    movimentosValidos.add(p1);
+                }
+                d2 = !opPeca.isPresent() && indexColuna > 0;
+            } else {
+                d2 = false;
+            }
+        }
+        linha = posicaoAtual.getLinha();
+        indexColuna = tabuleiro.getColunas().indexOf(super.getPosicaoAtual().getColuna());
+
+        boolean d3 = true;
+        while (d3) {
+            linha -= 1;
+            indexColuna += 1;
+            if(indexColuna < tabuleiro.getColunas().size() && indexColuna >= 0) {
+                Posicao p1 = new Posicao(tabuleiro.getColunas().get(indexColuna), linha);
+                if(!tabuleiro.isMovimentoValido(p1)) break;
+                Optional<Peca> opPeca = tabuleiro.existePecaNaPosicao(tabuleiro.getColunas().get(indexColuna), linha);
+                if (!opPeca.isPresent()) {
+                    movimentosValidos.add(p1);
+                }
+                if (opPeca.isPresent() && !opPeca.get().getCor().equals(this.getCor())) {
+                    movimentosValidos.add(p1);
+                }
+                d3 = !opPeca.isPresent() && indexColuna < 7;
+            } else {
+                d3 = false;
+            }
+        }
+        linha = posicaoAtual.getLinha();
+        indexColuna = tabuleiro.getColunas().indexOf(super.getPosicaoAtual().getColuna());
+
+        boolean d4 = true;
+        while (d4) {
+            linha -= 1;
+            indexColuna -= 1;
+            if(indexColuna < tabuleiro.getColunas().size() && indexColuna >= 0) {
+                Posicao p1 = new Posicao(tabuleiro.getColunas().get(indexColuna), linha);
+                if(!tabuleiro.isMovimentoValido(p1)) break;
+                Optional<Peca> opPeca = tabuleiro.existePecaNaPosicao(tabuleiro.getColunas().get(indexColuna), linha);
+                if (!opPeca.isPresent()) {
+                    movimentosValidos.add(p1);
+                }
+                if (opPeca.isPresent() && !opPeca.get().getCor().equals(this.getCor())) {
+                    movimentosValidos.add(p1);
+                }
+                d4 = !opPeca.isPresent() && indexColuna > 0;
+            } else {
+                d4 = false;
+            }
+        }
+        
+        return movimentosValidos.stream().anyMatch(p -> {
+            Optional<Peca> opPeca = tabuleiro.existePecaNaPosicao(p.getColuna(), p.getLinha());
+            return opPeca.filter(peca -> p.equalsTo(posicao) && !peca.getCor().equals(super.getCor())).isPresent();
+        });
     }
 }
