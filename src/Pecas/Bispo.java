@@ -28,7 +28,6 @@ public class Bispo extends Peca {
         int indexColuna = tabuleiro.getColunas().indexOf(super.getPosicaoAtual().getColuna());
 
         ArrayList<Posicao> movimentosValidos = new ArrayList<>();
-        // TODO
 
         boolean d1 = true;
         while (d1) {
@@ -58,7 +57,6 @@ public class Bispo extends Peca {
             indexColuna -= 1;
             if(indexColuna < tabuleiro.getColunas().size() && indexColuna >= 0) {
                 Posicao p1 = new Posicao(tabuleiro.getColunas().get(indexColuna), linha);
-                //if(!(!(linha > 0 && linha < 9) && !(indexColuna >= 0 && indexColuna < tabuleiro.getColunas().size()))) break;
                 if(!tabuleiro.isMovimentoValido(p1)) break;
                 Optional<Peca> opPeca = tabuleiro.existePecaNaPosicao(tabuleiro.getColunas().get(indexColuna), linha);
                 if (!opPeca.isPresent()) {
@@ -81,7 +79,6 @@ public class Bispo extends Peca {
             indexColuna += 1;
             if(indexColuna < tabuleiro.getColunas().size() && indexColuna >= 0) {
                 Posicao p1 = new Posicao(tabuleiro.getColunas().get(indexColuna), linha);
-                //if(!(!(linha > 0 && linha < 9) && !(indexColuna >= 0 && indexColuna < tabuleiro.getColunas().size()))) break;
                 if(!tabuleiro.isMovimentoValido(p1)) break;
                 Optional<Peca> opPeca = tabuleiro.existePecaNaPosicao(tabuleiro.getColunas().get(indexColuna), linha);
                 if (!opPeca.isPresent()) {
@@ -104,7 +101,6 @@ public class Bispo extends Peca {
             indexColuna -= 1;
             if(indexColuna < tabuleiro.getColunas().size() && indexColuna >= 0) {
                 Posicao p1 = new Posicao(tabuleiro.getColunas().get(indexColuna), linha);
-                //if(!(!(linha > 0 && linha < 9) && !(indexColuna >= 0 && indexColuna < tabuleiro.getColunas().size()))) break;
                 if(!tabuleiro.isMovimentoValido(p1)) break;
                 Optional<Peca> opPeca = tabuleiro.existePecaNaPosicao(tabuleiro.getColunas().get(indexColuna), linha);
                 if (!opPeca.isPresent()) {

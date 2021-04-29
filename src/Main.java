@@ -55,6 +55,14 @@ public class Main {
 
             //String stop = scanner.nextLine();
         }
+
+        System.out.println("Fim de jogo.");
+        System.out.println("O jogador " + (
+                xadrez.getStatusDoJogo().equals(StatusJogo.JOGADOR1_VENCEU)
+                        ? xadrez.getJogador1().getNome() : xadrez.getJogador2().getNome()
+                )
+                + " venceu"
+        );
     }
 
     private static boolean verificarInput(String[] input) {
