@@ -1,10 +1,12 @@
 package Jogo;
 
 import Pecas.Abstract.Peca;
+import Utils.Cores;
 import Utils.NomePecas;
 import Utils.Posicao;
 import Utils.StatusJogo;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class Xadrez {
@@ -68,8 +70,23 @@ public class Xadrez {
     }
 
     public StatusJogo getStatusDoJogo() {
-        // TODO implementar Logica
-        return StatusJogo.EM_JOGO;
+        ArrayList<Peca> pecas = this.tabuleiro.getPecas();
+        StatusJogo status = StatusJogo.EM_JOGO;
+
+        Optional<Peca> reiBranco = pecas
+                .stream()
+                .filter(p -> p.getNome().equals(NomePecas.REI) && p.getCor().equals(Cores.BRANCO))
+                .findAny();
+
+        Optional<Peca> reiPreto = pecas
+                .stream()
+                .filter(p -> p.getNome().equals(NomePecas.REI) && p.getCor().equals(Cores.PRETO))
+                .findAny();
+
+        if (reiBranco.isPresent() && !reiPreto.isPresent()) status = StatusJogo.JOGADOR1_VENCEU;
+        if (!reiBranco.isPresent() && reiPreto.isPresent()) status = StatusJogo.JOGADOR2_VENCEU;
+
+        return status;
     }
 
     public void imprimir() {

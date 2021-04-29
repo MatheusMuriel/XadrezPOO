@@ -128,4 +128,8 @@ public class Tabuleiro {
     public ArrayList<String> getColunas() {
         return colunas;
     }
+
+    public ArrayList<Peca> getPecas() {
+        return pecas;
+    }
 }
