@@ -35,7 +35,6 @@ public class Rei extends Peca {
         movimentosValidos.add(new Posicao(tabuleiro.getColunas().get(indexColuna-1), getPosicaoAtual().getLinha()+1));
         movimentosValidos.add(new Posicao(tabuleiro.getColunas().get(indexColuna-1), getPosicaoAtual().getLinha()-1));
         return movimentosValidos.stream().anyMatch(p -> p.equalsTo(posicao));
-        // TODO implementar Rogue
     }
 
     @Override

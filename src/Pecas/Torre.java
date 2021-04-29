@@ -19,7 +19,6 @@ public class Torre extends Peca {
 
     @Override
     public boolean isMovimentoValido(Posicao posicao, Tabuleiro tabuleiro) {
-        // TODO implementar Rogue
         return false;
     }
 

@@ -69,7 +69,6 @@ public class Tabuleiro {
         pecas.add(p);
     }
 
-    /** Remove a peça do jogo. */
     public void remover(Peca p) {
         this.pecas.remove(p);
     }
